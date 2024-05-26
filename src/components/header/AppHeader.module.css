@@ -1,0 +1,32 @@
+.appHeaderContainer {
+    display: flex;
+    justify-content: center;
+    background: #f0f2f5;
+}
+
+.appHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background: #fff;
+
+}
+
+.logo img {
+    height: 32px;
+    line-height: 50px;
+}
+
+.searchBar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.loginSection {
+    display: flex;
+    align-items: center;
+}
