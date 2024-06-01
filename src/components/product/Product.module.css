@@ -1,6 +1,7 @@
 .product {
     background-color: #FFF;
-    padding: 20px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .price {
@@ -9,9 +10,9 @@
 
 .buy {
     color: red;
+    font-weight: bold;
 }
 
 .buy:hover {
     color: red !important;
-
 }
