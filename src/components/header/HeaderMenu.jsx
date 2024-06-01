@@ -1,11 +1,12 @@
 import React from 'react';
-import { Layout, Input, Button, Avatar, Badge } from 'antd';
+import { Layout, Input, Button, Avatar, Badge, Select } from 'antd';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import styles from './AppHeader.module.css';
 import Logo from '../../assets/logo.png';
 
 const { Header } = Layout;
 const { Search } = Input;
+const { Option } = Select;
 
 const HeaderMenu = () => {
 
@@ -20,6 +21,15 @@ const HeaderMenu = () => {
           <img src={Logo} alt="Logo" style={{ marginTop: 25, marginRight: 10 }} />
         </div>
 
+        <div>
+
+          <Select value={"All Category"} style={{ width: 200 }}>
+            <Option key={"all"}>All Category</Option>
+            <Option key={"new"}>New Arrival</Option>
+          </Select>
+
+        </div>
+
         <div className={styles.searchBar}>
           <Search placeholder="Search..." onSearch={onSearch} enterButton />
         </div>
@@ -28,7 +38,7 @@ const HeaderMenu = () => {
           <Button style={{ margin: 10 }} type="primary">Login</Button>
 
           <Badge count={cartItemCount} className={styles.cartIcon}>
-            <ShoppingCartOutlined style={{ fontSize: '24px',cursor:'pointer' }} />
+            <ShoppingCartOutlined style={{ fontSize: '24px', cursor: 'pointer' }} />
           </Badge>
 
           <Avatar style={{ marginLeft: 16, marginRight: 10 }} icon={<UserOutlined />} />
