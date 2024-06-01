@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    DesktopOutlined,
+    DesktopOutlined, ContactsOutlined, SnippetsOutlined, ProductOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 
@@ -15,13 +15,34 @@ const Sidebar = () => {
             label: 'Home',
         },
         {
+            key: 'Products',
+            label: 'Products',
+            icon: <ProductOutlined />,
+            children: [
+                {
+                    key: '5',
+                    label: 'Man & Woman Fashion',
+                },
+                {
+                    key: '6',
+                    label: 'Electronic',
+                },
+                {
+                    key: '7',
+                    label: 'Jewellery Accessories',
+                },
+            ]
+        },
+
+
+        {
             key: '2',
-            icon: <DesktopOutlined />,
+            icon: <SnippetsOutlined />,
             label: 'About',
         },
         {
             key: '3',
-            icon: <DesktopOutlined />,
+            icon: <ContactsOutlined />,
             label: 'Contact us',
         }
     ];
