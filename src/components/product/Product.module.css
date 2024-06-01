@@ -1,0 +1,17 @@
+.product {
+    background-color: #FFF;
+    padding: 20px;
+}
+
+.price {
+    color: red;
+}
+
+.buy {
+    color: red;
+}
+
+.buy:hover {
+    color: red !important;
+
+}
