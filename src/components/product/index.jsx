@@ -19,7 +19,7 @@ const Product = () => {
                 <Col span={6}>
                     <Button className={styles.buy} type="text" >Buy Now</Button>
                 </Col>
-                <Col span={10}>
+                <Col span={12}>
 
                 </Col>
                 <Col span={6}>

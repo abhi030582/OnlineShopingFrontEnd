@@ -6,8 +6,6 @@ import {
 import { Menu } from 'antd';
 
 const Sidebar = () => {
-
-
     const items = [
         {
             key: '1',
