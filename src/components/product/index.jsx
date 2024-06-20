@@ -7,6 +7,7 @@ import { Button, Col, Row } from 'antd';
 const Product = (props) => {
     const { data } = props;
 
+
     return (
         <div className={styles.product}>
             <h2>{data.name}</h2>

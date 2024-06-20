@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Layout, Input, Button, Avatar, Badge, Select } from 'antd';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import styles from './AppHeader.module.css';
 import Logo from '../../assets/logo.png';
+import AppContext from 'antd/es/app/context';
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -10,7 +11,12 @@ const { Option } = Select;
 
 const HeaderMenu = () => {
 
-  const onSearch = (value) => console.log(value);
+  const contextData = useContext(AppContext);
+
+  const onSearch = (value) => {
+    contextData.setSearchText(value);
+  }
+
   const cartItemCount = 5;
 
   return (

@@ -5,27 +5,30 @@ import { BrowserRouter } from 'react-router-dom';
 import RouterPage from './config/Router';
 import Sidebar from './components/sidebar';
 import { Col, Row } from 'antd';
+import AppContext from 'antd/es/app/context';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [searchText, setSearchText] = useState("");
 
   return (
     <>
-      <BrowserRouter basename='/'>
-        <Row span={24}>
-          <Col span={4}>
-            <Sidebar />
-          </Col>
+      <AppContext.Provider value={{ "search": searchText, 'setSearchText': setSearchText }} >
+        <BrowserRouter basename='/'>
+          <Row span={24} gutter={6}>
+            <Col span={4}>
+              <Sidebar />
+            </Col>
 
-          <Col span={20}>
-            <HeaderMenu />
-            {RouterPage}
-          </Col>
-        </Row>
+            <Col span={20}>
+              <HeaderMenu />
+              {RouterPage}
+            </Col>
+          </Row>
 
-      </BrowserRouter>
-
+        </BrowserRouter>
+      </AppContext.Provider>
     </>
   )
 }
