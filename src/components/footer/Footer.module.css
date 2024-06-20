@@ -1,0 +1,9 @@
+.container {
+    width: 97%;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background: #fff;
+    margin-top: 8px;
+    height: 50px;
+}
