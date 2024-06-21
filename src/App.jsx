@@ -13,9 +13,11 @@ function App() {
 
   const [searchText, setSearchText] = useState("");
 
+  const [category, setCategory] = useState("All Category");
+
   return (
     <>
-      <AppContext.Provider value={{ "search": searchText, 'setSearchText': setSearchText }} >
+      <AppContext.Provider value={{ "search": searchText, 'setSearchText': setSearchText, "category": category, setCategory }} >
         <BrowserRouter basename='/'>
           <div style={{ padding: 5 }}>
             <Row span={24} gutter={6}>

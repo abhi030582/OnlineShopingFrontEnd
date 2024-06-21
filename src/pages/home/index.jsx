@@ -12,6 +12,7 @@ const Home = () => {
 
     const contextData = useContext(AppContext);
 
+    console.log(contextData);
 
     async function fetchProducts() {
         try {
@@ -43,19 +44,6 @@ const Home = () => {
 
     }, []);
 
-    // useEffect(() => {
-    //     console.log(products);
-    //     let filted = products.filter(item => {
-    //         return item.name.toLowerCase().includes(contextData.search.toLowerCase())
-    //             || item.description.toLowerCase().includes(contextData.search.toLowerCase())
-    //     });
-
-    //     console.log(filted);
-
-    //     setFilteredProducts(filted);
-
-    // }, [contextData?.search]);
-
     const filterProduct = (products) => {
         if (products?.length > 0 && contextData.search?.length > 0) {
             return products.filter(item => {
@@ -68,10 +56,11 @@ const Home = () => {
 
 
 
+
     return (
         <div>
-            <h1>All Products</h1>
-            <Row span={24} gutter={24}>
+            <h2>All Products</h2>
+            <Row span={24} gutter={12}>
                 {
                     products?.length > 0 ? filterProduct(products).map(item => {
                         return (
