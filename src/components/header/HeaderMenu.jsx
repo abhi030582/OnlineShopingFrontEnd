@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Layout, Input, Button, Avatar, Badge, Select } from 'antd';
+import { Layout, Input, Button, Avatar, Badge, Select, Modal } from 'antd';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import styles from './AppHeader.module.css';
 import Logo from '../../assets/logo.png';
@@ -14,16 +14,14 @@ const { Option } = Select;
 const HeaderMenu = () => {
 
   const contextData = useContext(AppContext);
+  const [categories, setCategories] = useState([]);
+  const [openCheckout, setOpenCheckout] = useState(false);
+
+  console.log(contextData);
 
   const onSearch = (value) => {
     contextData.setSearchText(value);
   }
-
-  const cartItemCount = 5;
-
-  const [categories, setCategories] = useState([]);
-
-
 
   async function fetchCategories() {
     try {
@@ -44,6 +42,17 @@ const HeaderMenu = () => {
   const handleCategory = (input) => {
     contextData.setCategory(input)
   }
+
+  const handleCart = () => {
+    setOpenCheckout(true);
+  }
+
+  const handleOk = () => {
+    setOpenCheckout(false);
+  };
+  const handleCancel = () => {
+    setOpenCheckout(false);
+  };
 
   return (
     <div className={styles.appHeaderContainer}>
@@ -73,8 +82,8 @@ const HeaderMenu = () => {
         <div className={styles.loginSection}>
           <Button style={{ margin: 10 }} type="primary">Login</Button>
 
-          <Badge count={cartItemCount} className={styles.cartIcon}>
-            <ShoppingCartOutlined style={{ fontSize: '24px', cursor: 'pointer' }} />
+          <Badge count={contextData.cart.length} className={styles.cartIcon} >
+            <ShoppingCartOutlined style={{ fontSize: '24px', cursor: 'pointer' }} onClick={handleCart} />
           </Badge>
 
           <Avatar style={{ marginLeft: 16, marginRight: 10 }} icon={<UserOutlined />} />
@@ -82,6 +91,33 @@ const HeaderMenu = () => {
         </div>
 
       </Header>
+
+
+
+      <Modal
+        open={openCheckout}
+        title="Checkout"
+        onCancel={handleCancel}
+        width={600}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" onClick={handleOk}>
+            Buy
+          </Button>
+        ]}
+      >
+        <div>
+
+          Some contents...
+
+
+        </div>
+
+      </Modal>
+
+
     </div>
   )
 }

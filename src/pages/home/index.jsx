@@ -45,15 +45,27 @@ const Home = () => {
     }, []);
 
     const filterProduct = (products) => {
-        if (products?.length > 0 && contextData.search?.length > 0) {
-            return products.filter(item => {
-                return item.name.toLowerCase().includes(contextData.search.toLowerCase())
-                    || item.description.toLowerCase().includes(contextData.search.toLowerCase())
-            });
+        if (!products?.length) {
+            return [];
         }
-        return products;
-    }
 
+        const searchQuery = contextData.search?.toLowerCase() || '';
+        const categoryQuery = contextData.category?.toLowerCase() || '';
+
+        return products.filter(item => {
+            const matchesSearch = searchQuery
+                ? item.name.toLowerCase().includes(searchQuery)
+                || item.description.toLowerCase().includes(searchQuery)
+                || item.category.toLowerCase().includes(searchQuery)
+                : true;
+
+            const matchesCategory = categoryQuery && categoryQuery !== "all category"
+                ? item.category.toLowerCase().includes(categoryQuery)
+                : true;
+
+            return matchesSearch && matchesCategory;
+        });
+    };
 
 
 

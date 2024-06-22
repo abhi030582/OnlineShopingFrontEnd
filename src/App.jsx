@@ -12,12 +12,12 @@ import Footer from './components/footer/Footer';
 function App() {
 
   const [searchText, setSearchText] = useState("");
-
   const [category, setCategory] = useState("All Category");
+  const [cart, setCart] = useState([]);
 
   return (
     <>
-      <AppContext.Provider value={{ "search": searchText, 'setSearchText': setSearchText, "category": category, setCategory }} >
+      <AppContext.Provider value={{ "search": searchText, 'setSearchText': setSearchText, "category": category, setCategory, "cart": cart, "setCart": setCart }} >
         <BrowserRouter basename='/'>
           <div style={{ padding: 5 }}>
             <Row span={24} gutter={6}>
