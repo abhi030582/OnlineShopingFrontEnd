@@ -1,10 +1,12 @@
-.appHeaderContainer {
+.appHeaderContainer 
+{
     display: flex;
     justify-content: center;
     background: #f0f2f5;
 }
 
-.appHeader {
+.appHeader 
+{
     width: 100%;
     display: flex;
     align-items: center;
@@ -13,12 +15,14 @@
     background: #fff;
 }
 
-.logo img {
+.logo img 
+{
     height: 32px;
     line-height: 50px;
 }
 
-.searchBar {
+.searchBar 
+{
     flex: 1;
     display: flex;
     justify-content: center;

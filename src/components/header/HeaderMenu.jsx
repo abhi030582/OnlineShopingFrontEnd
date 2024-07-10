@@ -78,7 +78,6 @@ const HeaderMenu = () => {
         <div className={styles.searchBar}>
           <Search placeholder="Search..." onSearch={onSearch} enterButton />
         </div>
-
         <div className={styles.loginSection}>
           <Button style={{ margin: 10 }} type="primary">Login</Button>
 

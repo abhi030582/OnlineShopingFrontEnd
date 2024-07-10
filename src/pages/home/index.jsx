@@ -12,18 +12,20 @@ const Home = () => {
 
     const contextData = useContext(AppContext);
 
-    console.log(contextData);
-
-    async function fetchProducts() {
+    async function fetchProducts() 
+    {
         try {
             const response = await getProducts();
             let result = response?.data;
-            if (result?.success) {
+            if (result?.success) 
+            {
                 setProducts(result?.products);
                 setFilteredProducts(result?.products);
             }
             console.log(result);
-        } catch (error) {
+        } 
+        catch (error) 
+        {
             console.log(error);
         }
     }
@@ -74,7 +76,8 @@ const Home = () => {
             <h2>All Products</h2>
             <Row span={24} gutter={12}>
                 {
-                    products?.length > 0 ? filterProduct(products).map(item => {
+                    products?.length > 0 ? filterProduct(products).map(item => 
+                    {
                         return (
                             <Col key={item._id} span={8} style={{ paddingTop: 10 }}>
                                 <Product data={item}></Product>
