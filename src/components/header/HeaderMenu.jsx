@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Layout, Input, Button, Avatar, Badge, Select, Modal } from 'antd';
-import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { UserOutlined,LogoutOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import styles from './AppHeader.module.css';
 import Logo from '../../assets/logo.png';
 import AppContext from 'antd/es/app/context';
 import { getCategories } from '../../services/productService';
+import { useNavigate } from 'react-router-dom';
+import { JWT_TOKEN } from '../../constant/AppConst';
 
 
 const { Header } = Layout;
@@ -16,6 +18,7 @@ const HeaderMenu = () => {
   const contextData = useContext(AppContext);
   const [categories, setCategories] = useState([]);
   const [openCheckout, setOpenCheckout] = useState(false);
+  const navigate = useNavigate();
 
   console.log(contextData);
 
@@ -41,6 +44,12 @@ const HeaderMenu = () => {
 
   const handleCategory = (input) => {
     contextData.setCategory(input)
+  }
+  const handleLogin =()=>{
+     navigate('/login');
+  }
+  const handleLogout =()=>{
+    localStorage.removeItem(JWT_TOKEN);
   }
 
   const handleCart = () => {
@@ -80,16 +89,19 @@ const HeaderMenu = () => {
         </div>
 
         <div className={styles.loginSection}>
-          <Button style={{ margin: 10 }} type="primary">Login</Button>
+          <Button style={{ margin: 10 }} type="primary" onClick={handleLogin}>Login</Button>
 
           <Badge count={contextData.cart.length} className={styles.cartIcon} >
             <ShoppingCartOutlined style={{ fontSize: '24px', cursor: 'pointer' }} onClick={handleCart} />
           </Badge>
 
           <Avatar style={{ marginLeft: 16, marginRight: 10 }} icon={<UserOutlined />} />
+          {
+            localStorage.getItem(JWT_TOKEN) ? <LogoutOutlined style={{ fontSize: '24px', cursor: 'pointer' }} onClick={handleLogout} /> : null
+          }
 
         </div>
-
+       
       </Header>
 
 
