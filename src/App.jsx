@@ -7,6 +7,7 @@ import Sidebar from './components/sidebar';
 import { Col, Row } from 'antd';
 import AppContext from 'antd/es/app/context';
 import Footer from './components/footer/Footer';
+import './config/Interceptore';
 
 
 function App() {
