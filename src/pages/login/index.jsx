@@ -1,10 +1,11 @@
 import { Button, Input } from 'antd';
 import React, { useState } from 'react';
 import { userLogin } from '../../services/userService';
-import { JWT_TOKEN } from '../../constant//AppConst';
+import { JWT_TOKEN, USER_NAME } from '../../constant//AppConst';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { jwtDecode } from 'jwt-decode';
 
 const index = () => 
 {
@@ -18,9 +19,18 @@ const index = () =>
             toast.error(response.data.message);
         } else {
             if (response.data.status) {
-                localStorage.setItem(JWT_TOKEN, response.data.token);
+              const token = response.data.token;
+                localStorage.setItem(JWT_TOKEN, token);
                 toast.success("Login Successfully");
-                navigate("/home");
+               // navigate("/home");
+              //  console.log(response);
+              //  console.log(token);
+               if(token)
+               {
+                const decoded = jwtDecode(token);
+                console.log(decoded);
+                localStorage.setItem(USER_NAME,decoded.username);
+               }
             }
         }
     });
