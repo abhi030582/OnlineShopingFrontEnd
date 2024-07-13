@@ -22,7 +22,7 @@ const index = () =>
               const token = response.data.token;
                 localStorage.setItem(JWT_TOKEN, token);
                 toast.success("Login Successfully");
-               // navigate("/home");
+              
               //  console.log(response);
               //  console.log(token);
                if(token)
@@ -31,6 +31,7 @@ const index = () =>
                 console.log(decoded);
                 localStorage.setItem(USER_NAME,decoded.username);
                }
+               navigate("/home");
             }
         }
     });

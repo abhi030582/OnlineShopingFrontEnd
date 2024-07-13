@@ -50,6 +50,7 @@ const HeaderMenu = () => {
   }
   const handleLogout =()=>{
     localStorage.removeItem(JWT_TOKEN);
+    navigate("/login");
   }
 
   const handleCart = () => {
